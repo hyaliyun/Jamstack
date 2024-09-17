@@ -1,0 +1,127 @@
+---
+title: Jamstack | JavaScript, APIs, and Markup
+description: What is the Jamstack? Why use the Jamstack? How do I get started? Learn what the Jamstack is all about and why it's the best approach for building faster, more secure websites.
+ogimage: "/img/og/default-og-image.png"
+---
+
+<!doctype html>
+<html lang="{{ meta.lang }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+{%- for url in stylesheets %}
+    <link rel="stylesheet" href="{{ url }}">
+{%- endfor %}
+    <title>{{ title }} | Jamstack</title>
+    <meta name="description" content="{{ description }}">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2FMMZSSS9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-X2FMMZSSS9');
+    </script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicons/favicon-16x16.png">
+    <link rel="canonical" href="{{ page.url | url | absoluteUrl(meta.url) }}"/>
+{%- for url in preconnect %}
+    <link rel="preconnect" href="{{ url }}">
+{%- endfor %}
+    <meta property="og:title" content="{{ title }} | Jamstack">
+    <meta property="og:site_name" content="Jamstack.org">
+    <meta property="og:url" content="https://jamstack.org{{ page.url }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ netlify.deployUrl }}{{ ogimage }}">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jamstack.org{{ page.url }}">
+    <meta property="twitter:title" content="{{ title }} | Jamstack">
+    <meta property="twitter:description" content="{{ description }}">
+    <meta property="twitter:image" content="{{ netlify.deployUrl }}{{ ogimage }}">
+    <script type="module">document.documentElement.classList.add("js");</script>
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    {%- for url in javascripts %}
+    <script defer src="{{ url }}"></script>
+    {%- endfor %}
+  </head>
+  <body class="bg-gray-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 leading-relaxed antialiased">
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute;">
+      <defs>
+        <symbol id="logo-jamstack" viewBox="0 0 523 98" fill="none">
+          <path d="M163.57 52.257v-35.76h-15.12v39.52c0 3.28-.24 7.52-4.56 7.52-3.84 0-4.4-3.92-4.56-6.88h-16.08c0 8.64 3.52 15.68 11.92 18.72 2.48.96 5.28 1.44 8 1.44 6.32 0 12.72-2.8 16.72-7.76 3.68-4.64 3.68-11.12 3.68-16.8Zm55.328 23.44v-44.4h-13.28v4.72h-.16c-2.64-4.4-8.08-6.24-12.96-6.24-13.36 0-22.32 10.72-22.32 23.68 0 13.2 8.64 23.76 22.32 23.76 4.8 0 10.56-1.76 12.96-6.32h.16v4.8h13.28Zm-13.28-22.24c0 6.4-4.64 11.36-11.12 11.36-6.24 0-11.04-5.04-11.04-11.2 0-6.32 4.48-11.44 10.96-11.44s11.2 4.8 11.2 11.28Zm91.128 22.24v-24.24c0-6.8.24-12.08-4.8-17.2-3.12-3.2-7.28-4.48-11.68-4.48-6 0-10.88 2.88-14.08 7.92-2.72-5.04-7.04-7.92-12.8-7.92-5.04 0-9.68 1.68-12.24 6.24h-.16v-4.72h-12.4v44.4h13.28v-23.6c0-5.2 1.36-9.84 7.52-9.84 5.6 0 6.64 4.72 6.64 9.28v24.16h13.28v-24.24c0-5.04 1.44-9.2 7.36-9.2 6.16 0 6.8 4.96 6.8 9.84v23.6h13.28Zm42.62-13.6c0-15.68-22.32-11.76-22.32-18.72 0-2 2-2.96 3.76-2.96 2.32 0 4.08.88 4.16 3.36h13.04c-.88-9.44-8.16-14-17.04-14-8.56 0-17.2 5.36-17.2 14.64 0 6.24 5.28 9.68 10.56 11.6 1.92.72 3.84 1.36 5.76 2 2.4.96 6 1.92 6 5.12 0 2.32-2.64 3.44-4.64 3.44-2.64 0-4.64-1.36-5.04-4.08h-13.2c1.04 9.76 8.8 14.72 18.08 14.72 9.04 0 18.08-5.12 18.08-15.12Zm28.962-20.72v-10.08h-6.4v-14.8h-13.28v14.8h-6.56v10.08h6.56v34.32h13.28v-34.32h6.4Zm51.195 34.32v-44.4h-13.28v4.72h-.16c-2.64-4.4-8.08-6.24-12.96-6.24-13.36 0-22.32 10.72-22.32 23.68 0 13.2 8.64 23.76 22.32 23.76 4.8 0 10.56-1.76 12.96-6.32h.16v4.8h13.28Zm-13.28-22.24c0 6.4-4.64 11.36-11.12 11.36-6.24 0-11.04-5.04-11.04-11.2 0-6.32 4.48-11.44 10.96-11.44s11.2 4.8 11.2 11.28Zm67.848 5.36h-13.52c-2 3.84-5.2 5.92-9.6 5.92-6.48 0-10.56-5.04-10.56-11.28 0-6 3.84-11.28 10.24-11.28 4.56 0 8 2.08 9.92 6.24h13.44c-2.32-11.28-12.16-18.64-23.52-18.64-13.2 0-23.44 10.48-23.44 23.6 0 13.28 10.48 23.76 23.76 23.76 11.2 0 20.72-7.44 23.28-18.32Zm48.135-27.52h-15.76l-12.32 16.08h-.16v-30.88h-13.28v59.2h13.28v-21.36h.16l12.56 21.36h15.04l-16.24-24.88 16.72-19.52Z" class="fill-current"/><path d="M48.47 1C21.668 1 0 22.668 0 49.47s21.668 48.47 48.47 48.47 48.47-21.668 48.47-48.47V1H48.47Z" fill="#F0047F"/>
+          <path d="M46.903 50.97v33.985C28.51 84.177 13.697 69.364 12.92 50.97h33.984ZM49.97 51.037h33.985C83.176 69.43 68.365 84.243 49.97 85.02V51.037ZM49.97 47.903V13.901h34.003v34.002H49.97Z" fill="#fff" stroke="#F0047F"/>
+        </symbol>
+      </defs>
+    </svg>
+    <div class="md:grid sm:page-layout">
+      <div class="bg-gray-100 dark:bg-blue-900 border-r border-gray-300 dark:border-blue-800">
+        {% include "header.njk" %}
+      </div>
+      <div>
+        {% include "banner.njk" %}
+        {% include "components/color-theme-selector.njk" %}
+        {{ content | safe }}
+        <div class="border-gray-300 dark:border-blue-800 border-t">
+          {% include "footer.njk" %}
+        </div>
+      </div>
+    </div>
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute;">
+      <defs>
+        <symbol id="logo-netlify-gem" viewBox="0 0 128 113">
+          <g clip-path="url(#clip0_236_179)">
+            <path d="M34.593 94.2052H33.3844L27.3514 88.1722V86.9637L36.5743 77.7409H42.9639L43.8158 78.5928V84.9824L34.593 94.2052Z" fill="#181A1C"/>
+            <path d="M27.3514 25.9703V24.7617L33.3844 18.7287H34.593L43.8158 27.9515V34.3411L42.9639 35.1931H36.5743L27.3514 25.9703Z" fill="#181A1C"/>
+            <path d="M80.4594 74.759H71.6824L70.9493 74.026V53.4802C70.9493 49.8248 69.5129 46.9915 65.1046 46.8925C62.836 46.833 60.2405 46.8925 57.4668 47.0014L57.0507 47.4274V74.0161L56.3176 74.7491H47.5406L46.8075 74.0161V38.9179L47.5406 38.1848H67.2939C74.9713 38.1848 81.1925 44.406 81.1925 52.0834V74.026L80.4594 74.759Z" fill="#181A1C"/>
+            <path d="M35.8412 61.6034H0.73307L0 60.8703V52.0735L0.73307 51.3404H35.8412L36.5743 52.0735V60.8703L35.8412 61.6034Z" fill="#181A1C"/>
+            <path d="M127.277 61.6034H92.1687L91.4356 60.8703V52.0735L92.1687 51.3404H127.277L128.01 52.0735V60.8703L127.277 61.6034Z" fill="#181A1C"/>
+            <path d="M58.9428 27.2185V0.887367L59.6759 0.154297H68.4727L69.2058 0.887367V27.2185L68.4727 27.9515H59.6759L58.9428 27.2185Z" fill="#181A1C"/>
+            <path d="M58.9428 112.056V85.7254L59.6759 84.9923H68.4727L69.2058 85.7254V112.056L68.4727 112.79H59.6759L58.9428 112.056Z" fill="#181A1C"/>
+          </g>
+          <defs>
+            <clipPath id="clip0_236_179">
+              <rect width="128" height="112.635" fill="white" transform="translate(0 0.154297)"/>
+            </clipPath>
+          </defs>
+        </symbol>
+        <symbol id="logo-twitter" viewBox="0 0 34 28" fill="none">
+          <path d="M10.7387 27.7146C23.4746 27.7146 30.4406 17.163 30.4406 8.01275C30.4406 7.71305 30.4406 7.4147 30.4204 7.1177C31.7755 6.13748 32.9453 4.92378 33.875 3.53345C32.6112 4.09343 31.2706 4.46066 29.8979 4.6229C31.3434 3.75752 32.4253 2.39644 32.9422 0.792946C31.5829 1.59951 30.0959 2.16794 28.5452 2.4737C27.5012 1.36357 26.1204 0.628473 24.6165 0.382159C23.1126 0.135844 21.5695 0.392045 20.2259 1.11111C18.8823 1.83018 17.8131 2.97203 17.1839 4.35997C16.5546 5.7479 16.4003 7.30454 16.7449 8.789C13.9919 8.65098 11.2987 7.93557 8.84011 6.68919C6.38155 5.44282 4.21258 3.69335 2.474 1.55435C1.58852 3.07872 1.31732 4.88326 1.71561 6.60056C2.1139 8.31787 3.15173 9.81881 4.6178 10.7978C3.51585 10.7651 2.43793 10.4679 1.475 9.9311C1.475 9.95945 1.475 9.98915 1.475 10.0188C1.47544 11.6175 2.02885 13.1669 3.04138 14.4041C4.05391 15.6412 5.46321 16.4901 7.03025 16.8066C6.01082 17.0847 4.94123 17.1253 3.90365 16.9254C4.34613 18.3013 5.20757 19.5045 6.3675 20.3667C7.52742 21.2289 8.92783 21.707 10.3729 21.7341C7.92089 23.6612 4.89193 24.7073 1.77335 24.7042C1.22242 24.7031 0.672026 24.6697 0.125 24.6042C3.29161 26.6364 6.97613 27.7143 10.7387 27.7092" class="fill-current"/>
+        </symbol>
+        <symbol id="logo-github" viewBox="0 0 36 36" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M18.0863 9.46569e-06C9.21815 -0.00900389 1.65462 6.41992 0.234722 15.1737C-1.18518 23.9274 3.95842 32.4175 12.3747 35.2121C13.2842 35.3784 13.6058 34.8128 13.6058 34.3359C13.6058 33.8591 13.6058 32.7722 13.6058 31.2639C8.55963 32.3619 7.49495 28.8351 7.49495 28.8351C7.16018 27.7421 6.44899 26.803 5.48758 26.1845C3.85729 25.0754 5.62067 25.0754 5.62067 25.0754C6.77864 25.239 7.79701 25.9261 8.38218 26.9386C8.87779 27.8373 9.7109 28.5015 10.6974 28.7846C11.6838 29.0676 12.7424 28.9461 13.639 28.4469C13.7086 27.5346 14.102 26.6771 14.7481 26.0292C10.7334 25.5745 6.51899 24.0219 6.51899 17.1569C6.49143 15.3635 7.15456 13.6283 8.37109 12.3104C7.82928 10.7511 7.8926 9.04522 8.54854 7.5304C8.54854 7.5304 10.0679 7.04243 13.517 9.3825C16.4788 8.56931 19.605 8.56931 22.5668 9.3825C26.016 7.04243 27.5242 7.5304 27.5242 7.5304C28.1893 9.02919 28.2685 10.7228 27.7461 12.2771C28.9626 13.595 29.6257 15.3303 29.5982 17.1236C29.5982 24.0662 25.3727 25.5856 21.3469 25.996C22.2203 26.874 22.6695 28.088 22.5779 29.3231C22.5779 31.7408 22.5779 33.6927 22.5779 34.2805C22.5779 34.8683 22.8995 35.323 23.82 35.1455C32.1364 32.2787 37.1791 23.8386 35.7627 15.1567C34.3463 6.47484 26.8826 0.0750875 18.0863 9.46569e-06Z" class="fill-current"/>
+        </symbol>
+        <symbol id="gem-jamstack" fill="none" viewBox="0 0 53 53"><path fill="none" fill-rule="evenodd" d="M26.5 0C11.847 0 0 11.847 0 26.5S11.847 53 26.5 53 53 41.153 53 26.5V0H26.5zm-1.13 45.613c-9.687-.553-17.466-8.332-18.02-18.02h18.02v18.02zm2.223-17.983h18.02c-.553 9.687-8.332 17.466-18.02 18.02V27.63zm0-20.303h18.044V25.37H27.593V7.327z" clip-rule="evenodd" class="fill-current" /></symbol>
+        <symbol id="github-star" viewBox="0 0 14 16" fill="currentColor" aria-hidden="true" version="1.1" style="display: inline-block; vertical-align: text-top;"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"></path></symbol>
+        <symbol id="github-issue" viewBox="0 0 14 16" fill="currentColor" aria-hidden="true" version="1.1" style="display: inline-block; vertical-align: text-top;"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></symbol>
+        <symbol id="github-fork" viewBox="0 0 10 16" fill="currentColor" aria-hidden="true" version="1.1" style="display: inline-block; vertical-align: text-top;"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"></path></symbol>
+        <symbol id="icon-home" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><path d="M18.672,11H17v6c0,0.445-0.194,1-1,1h-4v-6H8v6H4c-0.806,0-1-0.555-1-1v-6H1.328c-0.598,0-0.47-0.324-0.06-0.748L9.292,2.22C9.487,2.018,9.743,1.918,10,1.908c0.257,0.01,0.513,0.109,0.708,0.312l8.023,8.031C19.142,10.676,19.27,11,18.672,11z"></path></symbol>
+        <symbol id="icon-twitter" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><path d="M17.316,6.246c0.008,0.162,0.011,0.326,0.011,0.488c0,4.99-3.797,10.742-10.74,10.742c-2.133,0-4.116-0.625-5.787-1.697c0.296,0.035,0.596,0.053,0.9,0.053c1.77,0,3.397-0.604,4.688-1.615c-1.651-0.031-3.046-1.121-3.526-2.621c0.23,0.043,0.467,0.066,0.71,0.066c0.345,0,0.679-0.045,0.995-0.131c-1.727-0.348-3.028-1.873-3.028-3.703c0-0.016,0-0.031,0-0.047c0.509,0.283,1.092,0.453,1.71,0.473c-1.013-0.678-1.68-1.832-1.68-3.143c0-0.691,0.186-1.34,0.512-1.898C3.942,5.498,6.725,7,9.862,7.158C9.798,6.881,9.765,6.594,9.765,6.297c0-2.084,1.689-3.773,3.774-3.773c1.086,0,2.067,0.457,2.756,1.191c0.859-0.17,1.667-0.484,2.397-0.916c-0.282,0.881-0.881,1.621-1.66,2.088c0.764-0.092,1.49-0.293,2.168-0.594C18.694,5.051,18.054,5.715,17.316,6.246z"></path></symbol>
+        <symbol id="icon-github" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><path d="M13.18,11.309c-0.718,0-1.3,0.807-1.3,1.799c0,0.994,0.582,1.801,1.3,1.801s1.3-0.807,1.3-1.801C14.479,12.116,13.898,11.309,13.18,11.309z M17.706,6.626c0.149-0.365,0.155-2.439-0.635-4.426c0,0-1.811,0.199-4.551,2.08c-0.575-0.16-1.548-0.238-2.519-0.238c-0.973,0-1.945,0.078-2.52,0.238C4.74,2.399,2.929,2.2,2.929,2.2C2.14,4.187,2.148,6.261,2.295,6.626C1.367,7.634,0.8,8.845,0.8,10.497c0,7.186,5.963,7.301,7.467,7.301c0.342,0,1.018,0.002,1.734,0.002c0.715,0,1.392-0.002,1.732-0.002c1.506,0,7.467-0.115,7.467-7.301C19.2,8.845,18.634,7.634,17.706,6.626z M10.028,16.915H9.972c-3.771,0-6.709-0.449-6.709-4.115c0-0.879,0.31-1.693,1.047-2.369c1.227-1.127,3.305-0.531,5.662-0.531c0.01,0,0.02,0,0.029,0c0.01,0,0.018,0,0.027,0c2.357,0,4.436-0.596,5.664,0.531c0.735,0.676,1.045,1.49,1.045,2.369C16.737,16.466,13.8,16.915,10.028,16.915z M6.821,11.309c-0.718,0-1.3,0.807-1.3,1.799c0,0.994,0.582,1.801,1.3,1.801c0.719,0,1.301-0.807,1.301-1.801C8.122,12.116,7.54,11.309,6.821,11.309z"></path></symbol>
+        <symbol id="icon-color-theme-system" viewBox="0 0 14 14" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M14 7A7 7 0 1 1 0 7a7 7 0 0 1 14 0Zm-7 5.2A5.2 5.2 0 0 1 7 1.8v10.4Z" class="fill-current"/></symbol>
+        <symbol id="icon-color-theme-light" viewBox="0 0 16 16" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 0a.667.667 0 0 0-.667.667v.666a.667.667 0 0 0 1.334 0V.667A.667.667 0 0 0 8 0ZM2.343 2.343c.26-.26.682-.26.943 0l.471.472a.667.667 0 1 1-.943.942l-.471-.471a.667.667 0 0 1 0-.943ZM0 8c0-.368.298-.667.667-.667h.666a.667.667 0 0 1 0 1.334H.667A.667.667 0 0 1 0 8Zm12.243-4.243a.666.666 0 0 1 0-.942l.47-.472a.667.667 0 1 1 .944.943l-.472.471a.667.667 0 0 1-.942 0Zm2.424 3.576a.667.667 0 1 0 0 1.334h.666a.667.667 0 1 0 0-1.334h-.666Zm-2.424 4.91c.26-.26.682-.26.942 0l.472.47a.667.667 0 1 1-.943.944l-.471-.472a.667.667 0 0 1 0-.942ZM8 14a.667.667 0 0 0-.667.667v.666a.667.667 0 1 0 1.334 0v-.666A.667.667 0 0 0 8 14Zm-5.657-.343a.667.667 0 0 1 0-.943l.472-.471a.667.667 0 0 1 .942.942l-.471.472a.667.667 0 0 1-.943 0Zm1.616-3.324a4.667 4.667 0 1 0 8.083-4.666 4.667 4.667 0 0 0-8.083 4.666Z" class="fill-current"/></symbol>
+        <symbol id="icon-color-theme-dark" viewBox="0 0 12 12" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.314 6.866c-.444.11-.888.166-1.331.166A4.96 4.96 0 0 1 4.99 2.063c0-.441.056-.883.167-1.325.055-.165 0-.386-.167-.552-.166-.165-.332-.22-.554-.165C1.83.794 0 3.223 0 5.928A6.069 6.069 0 0 0 6.1 12c2.718 0 5.158-1.822 5.88-4.472.055-.165 0-.386-.167-.552a.534.534 0 0 0-.5-.11Z" class="fill-current"/></symbol>
+      </defs>
+    </svg>
+    <script type="module" src="/js/details-force-state.js"></script>
+    <script type="module" src="/js/color-theme.js"></script>
+    <script type="module" src="/js/filter-container.js"></script>
+    <script type="module" src="/js/sort-container.js"></script>
+    <script type="module" src="/js/lazyiframe.js"></script>
+    {%- for path in javascriptIncludes %}
+    {% include path %}
+    {%- endfor %}
+  </body>
+</html>

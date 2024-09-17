@@ -1,0 +1,46 @@
+.logos-ticker {
+  --speed: 90s;
+  --gap: 3em;
+
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+  mask-image: linear-gradient(
+    to right,
+    hsl(0 0% 0% / 0),
+    hsl(0 0% 0% / 1) 20%,
+    hsl(0 0% 0% / 1) 80%,
+    hsl(0 0% 0% / 0)
+  );
+}
+
+.logos-ticker-container {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--gap);
+  min-width: 100%;
+  animation: slide var(--speed) linear infinite;
+}
+
+.logos-ticker-container svg {
+  flex: 0 0 auto;
+  fill: #646e73;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logos-ticker-container {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap, 0px)));
+  }
+}
